@@ -1,8 +1,11 @@
 body {
     text-align: center;
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(67, 70, 64, 1) 100%);
 }
 
 h1 {
+
     font-family: Monoton;
     font-size: 70px;
     margin: 0.2em;
