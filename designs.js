@@ -22,7 +22,6 @@ function makeGrid(heightOfCanvas, widthOfCanvas) {
     }
 }
 
-
 /**************************************************************************************/
 /******************************  Color filling  ***************************************/
 /**************************************************************************************/
@@ -41,5 +40,5 @@ colorPick.submit(function () {
 let box=$('.tableColumn');
 box.click(function(){
     $(this).css("backgroundColor",red)
-    
+
 });
