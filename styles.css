@@ -5,7 +5,6 @@ body {
 }
 
 h1 {
-
     font-family: Monoton;
     font-size: 70px;
     margin: 0.2em;
@@ -40,4 +39,8 @@ td {
 
 input[type=number] {
     width: 6em;
+}
+
+#pixelCanvas {
+    background-color: white;
 }
