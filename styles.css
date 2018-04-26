@@ -44,3 +44,10 @@ input[type=number] {
 #pixelCanvas {
     background-color: white;
 }
+
+.box-click {
+  background-color: red;
+}
+.box-dbclick {
+  background-color: white;
+}
