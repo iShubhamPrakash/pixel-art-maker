@@ -1,9 +1,6 @@
-/**************************************************************************************/
-/***************************  Creation of grit  ***************************************/
-/**************************************************************************************/
+/***************************  Creation of grid  ***************************************/
 
-// When size is submitted by the user, call makeGrid()
-$('#sizePicker').submit(function (event) {
+$('#sizePicker').submit(function(event) {
     event.preventDefault();
     let heightOfCanvas = $('#inputHeight').val();
     let widthOfCanvas = $('#inputWidth').val();
@@ -13,32 +10,47 @@ $('#sizePicker').submit(function (event) {
 //Function defination of makeGrid
 function makeGrid(heightOfCanvas, widthOfCanvas) {
     let canvas = $('#pixelCanvas');
+    let row;
+
     canvas.empty();
-    for (let i = 0; i < heightOfCanvas; i++) {
+    for (let i = 1; i <= heightOfCanvas; i++) {
         canvas.append('<tr class="tableRow"> </tr>');
     }
-    for (let j = 0; j < widthOfCanvas; j++) {
-        $('.tableRow').append('<td class="tableColumn"> </td>');
+    for (let j = 1; j <= widthOfCanvas; j++) {
+        row = $('.tableRow');
+        row.append('<td class="tableColumn"> </td>');
     }
+
+    //assign unique class to each box
+    $('.tableColumn').each(function(i){
+        $(this).addClass('box'+(i+1));
+    });
+
+
 }
 
-/**************************************************************************************/
 /******************************  Color filling  ***************************************/
-/**************************************************************************************/
 
-//Select color input
-let color;
+console.log("yaha tak to hik h");
+
+//set color on select
 let colorPick = $('#colorPicker');
-colorPick.trigger("click");
-    console.log("hahah");
-    console.log(colorPick.val());
+var color;
+colorPick.change(function() {
+    color = colorPick.val();
+    console.log("color is " + color);
 
+//color box on click
+    let gridBox=$('.tableColumn');
+    gridBox.click(function() {
+    gridBox.css("background-color", color);
 
-colorPick.submit(function () {
-    color = $('#colorPicker').val();
+    });
+//color box white on doublr click
+    gridBox.dblclick(function() {
+    gridBox.css("background-color", "white");
+    });
+
 });
-let box=$('.tableColumn');
-box.click(function(){
-    $(this).css("backgroundColor",red)
 
-});
+//select clicked box-
