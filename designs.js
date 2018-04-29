@@ -42,6 +42,7 @@ function makeGrid() {
     //select clicked cell            
     let cell = canvas.find('td');
     // When td is single clicked,change color of td to selected color
+    
     cell.click(function () {
         var color;
         color = $("#colorPicker").val(); // Select color input
@@ -53,5 +54,27 @@ function makeGrid() {
     cell.dblclick(function () {
         $(this).attr('bgcolor', 'white');
     });
+
+    let drag=false;
+    cell.mousedown(function(){
+        drag=true;
+    });
+    cell.mouseup(function(){
+        drag=false;
+    });
+
+    cell.mousemove(function () {
+        if(drag){
+            var color;
+        color = $("#colorPicker").val(); // Select color input
+        console.log("changeColor is running, color=" + color); //log color value
+        $(this).attr('bgcolor', color);
+        }
+    });
+
+
+
+
+
 
 }
