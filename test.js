@@ -1,3 +1,6 @@
-let num = `shubham`;
-console.log(`haha it is ${num}`);
-console.log(typeof(num));
+let num="hello";
+let msg;
+for(i=1;i<5;i++){
+msg=`So, ${num} ${i}`
+console.log(msg);
+}

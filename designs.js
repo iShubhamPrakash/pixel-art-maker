@@ -1,56 +1,57 @@
-/***************************  Creation of grid  ***************************************/
-
-$('#sizePicker').submit(function(event) {
-    event.preventDefault();
-    let heightOfCanvas = $('#inputHeight').val();
-    let widthOfCanvas = $('#inputWidth').val();
-    makeGrid(heightOfCanvas, widthOfCanvas);
+//jQuery selector for submit button-
+let onSubmit=$('#sizePicker');
+//pressing submit button calls makeGrid function-
+onSubmit.submit(function(event){
+//Prevent default action of submit button-
+event.preventDefault();
+//checks if submit button working-
+console.log("Submit button working bro");
+//Call makeGrid to creates a grid of cells-
+makeGrid();
 });
 
-//Function defination of makeGrid
-function makeGrid(heightOfCanvas, widthOfCanvas) {
-    let canvas = $('#pixelCanvas');
-    let row;
+//To creae a grid of specified dimension-
+function makeGrid(){
+    //store the value of height
+    let gridHeight=$('#inputHeight').val();
 
-    canvas.empty();
-    for (let i = 1; i <= heightOfCanvas; i++) {
-        canvas.append('<tr class="tableRow"> </tr>');
-    }
-    for (let j = 1; j <= widthOfCanvas; j++) {
-        row = $('.tableRow');
-        row.append('<td class="tableColumn"> </td>');
-    }
+    //store the value of width
+    let gridWidth=$('#inputWidth').val();
 
-    //assign unique class to each box
-    $('.tableColumn').each(function(i){
-        $(this).addClass('box'+(i+1));
+    //checks if makeGrid is called and log the value of grid dimension in console
+    console.log("makeGrid call successful bro-");
+    console.log("Height="+gridHeight+" Width="+gridWidth);
+
+    //jQuery selector for table
+    let canvas=$('#pixelCanvas');
+
+    //removes previous table cells
+    canvas.children().remove();
+        for(i=0;i<gridHeight;i++){
+            //creates table rows
+            canvas.append('<tr></tr>');
+        }
+        //jQuery selector for created table row
+        row=$('tr');
+        for(j=0;j<gridWidth;j++){
+             //created table data
+            row.append('<td></td>');
+        }
+
+
+    //select clicked cell            
+    let cell = canvas.find('td');
+	// When td is single clicked,change color of td to selected color
+	cell.click(function() {
+        var color;
+        color = $("#colorPicker").val();  // Select color input
+        console.log("changeColor is running, color="+ color); //log color value
+		$(this).attr('bgcolor', color);
     });
-
+    
+    //on double click change color back to white
+    cell.dblclick(function(){
+        $(this).attr('bgcolor', 'white');
+    });
 
 }
-
-/******************************  Color filling  ***************************************/
-
-console.log("yaha tak to hik h");
-
-//set color on select
-let colorPick = $('#colorPicker');
-var color;
-colorPick.change(function() {
-    color = colorPick.val();
-    console.log("color is " + color);
-
-//color box on click
-    let gridBox=$('.tableColumn');
-    gridBox.click(function() {
-    gridBox.css("background-color", color);
-
-    });
-//color box white on doublr click
-    gridBox.dblclick(function() {
-    gridBox.css("background-color", "white");
-    });
-
-});
-
-//select clicked box-
