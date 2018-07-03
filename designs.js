@@ -6,9 +6,6 @@ $(document).ready(function () {
     onSubmit.submit(function (event) {
         //Prevent default action of submit button-
         event.preventDefault();
-        //checks if submit button working-
-        console.log("Submit button working bro");
-        //Call makeGrid to creates a grid of cells-
         makeGrid();
     });
 
@@ -61,15 +58,15 @@ $(document).ready(function () {
         cell.mousedown(function () {
             drag = true;
         });
-        cell.mouseup(function () {
+        $('body').mouseup(function () {
             drag = false;
         });
         //on click and drag color the grid
-        cell.mousemove(function () {
+        cell.mousemove(function (event) {
+            event.preventDefault();
             if (drag) {
                 var color;
                 color = $("#colorPicker").val(); // Select color input
-                console.log("changeColor is running, color=" + color); //log color value
                 $(this).attr('bgcolor', color);
             }
         });
