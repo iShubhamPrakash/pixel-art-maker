@@ -17,10 +17,6 @@ $(document).ready(function () {
         //store the value of width
         let gridWidth = $('#inputWidth').val();
 
-        //checks if makeGrid is called and log the value of grid dimension in console
-        console.log("makeGrid call successful bro-");
-        console.log("Height=" + gridHeight + " Width=" + gridWidth);
-
         //jQuery selector for table
         let canvas = $('#pixelCanvas');
 
@@ -45,7 +41,6 @@ $(document).ready(function () {
         cell.click(function () {
             var color;
             color = $("#colorPicker").val(); // Select color input
-            console.log("changeColor is running, color=" + color); //log color value
             $(this).attr('bgcolor', color);
         });
 
